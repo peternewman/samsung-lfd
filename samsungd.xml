@@ -23,9 +23,9 @@
             <!-- Ensure this list matches the input command -->
             <item name="S-Video" value="0x04"/>
             <item name="Component" value="0x08"/>
-            <item name="AV" value="0x0C"/>
+            <item name="AV1, AV" value="0x0C"/>
             <item name="AV2" value="0x0D"/>
-            <item name="SCART1" value="0x0E"/>
+            <item name="SCART1, Ext" value="0x0E"/>
             <item name="PC" value="0x14"/>
             <item name="DVI" value="0x18"/>
             <item name="BNC" value="0x1E"/>
@@ -35,24 +35,23 @@
             <item name="HDMI1-PC" value="0x22"/>
             <item name="HDMI2" value="0x23"/>
             <item name="HDMI2-PC" value="0x24"/>
-            <item name="DP, DP1, DisplayPort1" value="0x25"/>
-            <item name="DP2" value="0x26"/>
-            <item name="DP3" value="0x27"/>
+            <item name="DP1, DP, DisplayPort1" value="0x25"/>
+            <item name="DP2, DisplayPort2" value="0x26"/>
+            <item name="DP3, DisplayPort3" value="0x27"/>
             <item name="HDMI3" value="0x31"/>
             <item name="HDMI3-PC" value="0x32"/>
             <item name="HDMI4" value="0x33"/>
             <item name="HDMI4-PC" value="0x34"/>
-            <item name="TV-DTV" value="0x40"/>
+            <item name="TV-DTV, DTV" value="0x40"/>
             <item name="HD-BaseT" value="0x55"/>
             <item name="OCM" value="0x56"/>
             <item name="MagicInfo-S" value="0x60"/>
-            <item name="Screen Mirroring" value="0x61"/>
-            <item name="USB" value="0x62"/>
+            <item name="Screen Mirroring, WiDi" value="0x61"/>
+            <item name="USB, Internal" value="0x62"/>
             <item name="URL Launcher" value="0x63"/>
             <item name="Whiteboard" value="0x64"/>
             <item name="Web Browser" value="0x65"/>
             <item name="Remote Workspace" value="0x66"/>
-            <!-- and some more -->
         </value>
         <value name="aspect"/>
         <value name="NTimeNF"/>
@@ -98,10 +97,7 @@
             <item name="off" value="0x00"/>
         </value>
     </command>
-    <command name="volume" code="0x12" mode="rw">
-        <!-- Set/get display audio volume. Return number. Command: 'volume 0-100', 'volume?' -->
-        <value min="0" max="100"/>
-    </command>
+    <command name="volume" code="0x12" min="0" max="100" mode="rw"/><!-- Set/get display audio volume. Return number. Command: 'volume 0-100', 'volume?' -->
     <command name="mute" code="0x13" mode="rw">
         <!-- Set audio mute on/off or get mute state. Return string. Command: 'mute on|off', 'mute?' -->
         <value>
@@ -115,9 +111,9 @@
             <!-- Ensure this list matches the status command's input field -->
             <item name="S-Video" value="0x04"/>
             <item name="Component" value="0x08"/>
-            <item name="AV" value="0x0C"/>
+            <item name="AV1, AV" value="0x0C"/>
             <item name="AV2" value="0x0D"/>
-            <item name="SCART1" value="0x0E"/>
+            <item name="SCART1, Ext" value="0x0E"/>
             <item name="PC" value="0x14"/>
             <item name="DVI" value="0x18"/>
             <item name="BNC" value="0x1E"/>
@@ -127,60 +123,35 @@
             <item name="HDMI1-PC" value="0x22"/>
             <item name="HDMI2" value="0x23"/>
             <item name="HDMI2-PC" value="0x24"/>
-            <item name="DP, DP1, DisplayPort1" value="0x25"/>
-            <item name="DP2" value="0x26"/>
-            <item name="DP3" value="0x27"/>
+            <item name="DP1, DP, DisplayPort1" value="0x25"/>
+            <item name="DP2, DisplayPort2" value="0x26"/>
+            <item name="DP3, DisplayPort3" value="0x27"/>
             <item name="HDMI3" value="0x31"/>
             <item name="HDMI3-PC" value="0x32"/>
             <item name="HDMI4" value="0x33"/>
             <item name="HDMI4-PC" value="0x34"/>
-            <item name="TV-DTV" value="0x40"/>
+            <item name="TV-DTV, DTV" value="0x40"/>
             <item name="HD-BaseT" value="0x55"/>
             <item name="OCM" value="0x56"/>
             <item name="MagicInfo-S" value="0x60"/>
-            <item name="Screen Mirroring" value="0x61"/>
-            <item name="USB" value="0x62"/>
+            <item name="Screen Mirroring, WiDi" value="0x61"/>
+            <item name="USB, Internal" value="0x62"/>
             <item name="URL Launcher" value="0x63"/>
             <item name="Whiteboard" value="0x64"/>
             <item name="Web Browser" value="0x65"/>
             <item name="Remote Workspace" value="0x66"/>
-            <!-- and some more -->
         </value>
     </command>
 
     <command name="screenSize" code="0x19" mode="r"/> <!-- Get screen size (diagonal) in inches. Command: 'screensize?' -->
-    <command name="contrast" code="0x24" mode="rw">
-        <!-- Set/get display contrast. Return number. Command: 'contrast 0-100', 'contrast?' -->
-        <value min="0" max="100"/>
-    </command>
-    <command name="brightness" code="0x25" mode="rw">
-        <!-- Set/get display brightness. Return number. Command: 'brightness 0-100', 'brightness?' -->
-        <value min="0" max="100"/>
-    </command>
-    <command name="sharpness" code="0x26" mode="rw">
-        <!-- Set/get display sharpness. Return number. Command: 'sharpness 0-100', 'sharpness?' -->
-        <value min="0" max="100"/>
-    </command>
-    <command name="saturation" code="0x27" mode="rw">
-        <!-- Set/get display color saturation. Return number. Command: 'saturation 0-100', 'saturation?' -->
-        <value min="0" max="100"/>
-    </command>
-    <command name="tint" code="0x28" mode="rw"/>
-        <!-- Set/get display tint. Return number. Command: 'tint 0-100', 'tint?' -->
-        <value min="0" max="100"/>
-    </command>
-    <command name="rgbContrast" code="0x37" mode="rw">
-        <!-- Set/get display RGB contrast. Return number. Command: 'rgbContrast 0-100', 'rgbContrast?' -->
-        <value min="0" max="100"/>
-    </command>
-    <command name="rgbBrightness" code="0x38" mode="rw">
-        <!-- Set/get display RGB brightness. Return number. Command: 'rgbBrightness 0-100', 'rgbBrightness?' -->
-        <value min="0" max="100"/>
-    </command>
-    <command name="fanspeed" code="0x44" mode="rw">
-        <!-- Set/get fan speed. Return number. Command: 'fanspeed 0-100', 'fanspeed?' -->
-        <value min="0" max="100"/>
-    </command>
+    <command name="contrast" code="0x24" min="0" max="100" mode="rw"/><!-- Set/get display contrast. Return number. Command: 'contrast 0-100', 'contrast?' -->
+    <command name="brightness" code="0x25" min="0" max="100" mode="rw"/><!-- Set/get display brightness. Return number. Command: 'brightness 0-100', 'brightness?' -->
+    <command name="sharpness" code="0x26" min="0" max="100" mode="rw"/><!-- Set/get display sharpness. Return number. Command: 'sharpness 0-100', 'sharpness?' -->
+    <command name="saturation" code="0x27" min="0" max="100" mode="rw"/><!-- Set/get display color saturation. Return number. Command: 'saturation 0-100', 'saturation?' -->
+    <command name="tint" code="0x28" min="0" max="100" mode="rw"/><!-- Set/get display tint. Return number. Command: 'tint 0-100', 'tint?' -->
+    <command name="rgbContrast" code="0x37" min="0" max="100" mode="rw"/><!-- Set/get display RGB contrast. Return number. Command: 'rgbContrast 0-100', 'rgbContrast?' -->
+    <command name="rgbBrightness" code="0x38" min="0" max="100" mode="rw"/><!-- Set/get display RGB brightness. Return number. Command: 'rgbBrightness 0-100', 'rgbBrightness?' -->
+    <command name="fanspeed" code="0x44" min="0" max="100" mode="rw"/> <!-- Set/get fan speed. Return number. Command: 'fanspeed 0-100', 'fanspeed?' -->
     <command name="wallMode" code="0x5C" mode="rw">
         <!-- Set/get border compensation for wall/matrix mode. Return string. Command: 'wallMode natural|full', 'wallmode?' -->
         <value>

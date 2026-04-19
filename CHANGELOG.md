@@ -12,5 +12,7 @@
 - Multiple aliases for value names support
 ## 1.2.0/2026-02-02
 - Added video (0x04) control
+## 2.0.0/2026-02-02
+- Input names in samsungd.xml standardisation. Commands input? or status? can return slightly different input name.
 ## TODO
 
