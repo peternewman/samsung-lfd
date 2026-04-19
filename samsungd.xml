@@ -64,7 +64,16 @@
         <value name="sharpness"/>
         <value name="color"/>
         <value name="tint"/>
-        <value name="colorTone"/>
+        <value name="colorToneVideo">
+            <!-- Ensure this list matches the color tone video command -->
+            <item name="Cool 2" value="0x00"/>
+            <item name="Cool 1, Cool" value="0x01"/>
+            <item name="Normal, Standard" value="0x02"/>
+            <item name="Warm 1, Warm" value="0x03"/>
+            <item name="Warm 2" value="0x04"/>
+            <item name="Natural" value="0x05"/>
+            <item name="Off" value="0x50"/>
+        </value>
         <value name="colorTemp">
             <!-- Ensure this list matches the color temperature command -->
             <item name="5000K" value="0x00"/>
@@ -89,6 +98,21 @@
         <!-- One byte of padding -->
     </command>
     <command name="sernum" code="0x0B" mode="r"/> <!-- Get display serial number. Return string. Command: 'sernum?' -->
+    <command name="displayStatus" code="0x0D" mode="r">
+        <!-- Get display status. Return object. Command: 'displayStatus?' -->
+        <value name="Lamp_Error">
+            <item name="normal" value="0x00"/>
+            <item name="error" value="0x01"/>
+        </value>
+        <value name="Temperature_Error">
+            <item name="normal" value="0x00"/>
+            <item name="error" value="0x01"/>
+        </value>
+        <value name="Bright_Sensor_Error"/>
+        <value name="No_Sync_Error"/>
+        <value name="Cur_Temp"/>
+        <value name="Fan_Error"/>
+    </command>
     <command name="software" code="0x0E" mode="r"/><!-- Get info and software version. Return string. Command: 'software?' -->
     <command name="power" code="0x11" mode="rw" wDuration="10000">
         <!-- Set display power on/off or get power status. Return string 'on|off'. Command: 'power on|off', 'power?' -->
@@ -149,6 +173,42 @@
     <command name="sharpness" code="0x26" min="0" max="100" mode="rw"/><!-- Set/get display sharpness. Return number. Command: 'sharpness 0-100', 'sharpness?' -->
     <command name="saturation" code="0x27" min="0" max="100" mode="rw"/><!-- Set/get display color saturation. Return number. Command: 'saturation 0-100', 'saturation?' -->
     <command name="tint" code="0x28" min="0" max="100" mode="rw"/><!-- Set/get display tint. Return number. Command: 'tint 0-100', 'tint?' -->
+    <command name="colorTone" code="0x3E" mode="rw">
+        <!-- Set/get color tone. Return string. Command: 'colorTone colorToneVideo', 'colorTone?' -->
+        <value name="colorToneVideo">
+            <!-- Ensure this list matches the video command -->
+            <item name="Cool 2" value="0x00"/>
+            <item name="Cool 1, Cool" value="0x01"/>
+            <item name="Normal, Standard" value="0x02"/>
+            <item name="Warm 1, Warm" value="0x03"/>
+            <item name="Warm 2" value="0x04"/>
+            <item name="Natural" value="0x05"/>
+            <item name="Off" value="0x50"/>
+        </value>
+    </command>
+    <command name="colorTemp" code="0x3F" mode="rw">
+        <!-- Set/get color temperature. Return string. Command: 'colorTemp colorTemp', 'colorTemp?' -->
+        <value name="colorTemp">
+            <!-- Ensure this list matches the video command -->
+            <item name="5000K" value="0x00"/>
+            <item name="6000K" value="0x01"/>
+            <item name="7000K" value="0x02"/>
+            <item name="8000K" value="0x03"/>
+            <item name="9000K" value="0x04"/>
+            <item name="10000K" value="0x05"/>
+            <item name="11000K" value="0x06"/>
+            <item name="12000K" value="0x07"/>
+            <item name="13000K" value="0x08"/>
+            <item name="14000K" value="0x09"/>
+            <item name="15000K" value="0x0A"/>
+            <item name="6000K" value="0x3C"/>
+            <item name="6500K" value="0x41"/>
+            <item name="10000K" value="0x64"/>
+            <item name="2800K" value="0xFD"/>
+            <item name="3000K" value="0xFE"/>
+            <item name="4000K" value="0xFF"/>
+        </value>
+    </command>
     <command name="rgbContrast" code="0x37" min="0" max="100" mode="rw"/><!-- Set/get display RGB contrast. Return number. Command: 'rgbContrast 0-100', 'rgbContrast?' -->
     <command name="rgbBrightness" code="0x38" min="0" max="100" mode="rw"/><!-- Set/get display RGB brightness. Return number. Command: 'rgbBrightness 0-100', 'rgbBrightness?' -->
     <command name="fanspeed" code="0x44" min="0" max="100" mode="rw"/> <!-- Set/get fan speed. Return number. Command: 'fanspeed 0-100', 'fanspeed?' -->
@@ -165,6 +225,36 @@
         <value>
             <item name="up" value="0x00"/>
             <item name="down" value="0x01"/>
+        </value>
+    </command>
+
+    <command name="pMode" code="0x71" mode="rw">
+        <!-- Set/get picture mode. Return string. Command: 'pMode ', 'pMode?' -->
+        <value>
+            <item name="Dynamic" value="0x00"/>
+            <item name="Standard, Live" value="0x01"/>
+            <item name="Movie" value="0x02"/>
+            <item name="Custom-AV" value="0x03"/>
+            <item name="Natural" value="0x04"/>
+            <item name="Calibration-AV" value="0x05"/>
+            <item name="Off-AV" value="0x50"/>
+            <item name="Entertain" value="0x10"/>
+            <item name="Internet" value="0x11"/>
+            <item name="Text" value="0x12"/>
+            <item name="Custom-PC" value="0x13"/>
+            <item name="Advertisement" value="0x14"/>
+            <item name="Information" value="0x15"/>
+            <item name="Calibration-PC, Calibration-Common" value="0x16"/>
+            <item name="Shop &amp; Mall-Video" value="0x20"/>
+            <item name="Shop &amp; Mall-Text" value="0x21"/>
+            <item name="Office &amp; School-Video" value="0x22"/>
+            <item name="Office &amp; School-Text" value="0x23"/>
+            <item name="Terminal &amp; Station-Video" value="0x24"/>
+            <item name="Terminal &amp; Station-Text" value="0x25"/>
+            <item name="Videowall-Video" value="0x26"/>
+            <item name="Videowall-Text" value="0x27"/>
+            <item name="HDR+" value="0x30"/>
+            <item name="Reserved" value="0x90"/>
         </value>
     </command>
 
