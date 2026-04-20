@@ -64,8 +64,8 @@
         <value name="sharpness"/>
         <value name="color"/>
         <value name="tint"/>
-        <value name="colorToneVideo">
-            <!-- Ensure this list matches the color tone video command -->
+        <value name="colorTone">
+            <!-- Ensure this list matches the color tone command -->
             <item name="Cool 2" value="0x00"/>
             <item name="Cool 1, Cool" value="0x01"/>
             <item name="Normal, Standard" value="0x02"/>
@@ -174,8 +174,8 @@
     <command name="saturation" code="0x27" min="0" max="100" mode="rw"/><!-- Set/get display color saturation. Return number. Command: 'saturation 0-100', 'saturation?' -->
     <command name="tint" code="0x28" min="0" max="100" mode="rw"/><!-- Set/get display tint. Return number. Command: 'tint 0-100', 'tint?' -->
     <command name="colorTone" code="0x3E" mode="rw">
-        <!-- Set/get color tone. Return string. Command: 'colorTone colorToneVideo', 'colorTone?' -->
-        <value name="colorToneVideo">
+        <!-- Set/get color tone. Return string. Command: 'colorTone value', 'colorTone?' -->
+        <value name="colorTone">
             <!-- Ensure this list matches the video command -->
             <item name="Cool 2" value="0x00"/>
             <item name="Cool 1, Cool" value="0x01"/>
@@ -187,7 +187,7 @@
         </value>
     </command>
     <command name="colorTemp" code="0x3F" mode="rw">
-        <!-- Set/get color temperature. Return string. Command: 'colorTemp colorTemp', 'colorTemp?' -->
+        <!-- Set/get color temperature. Return string. Command: 'colorTemp value', 'colorTemp?' -->
         <value name="colorTemp">
             <!-- Ensure this list matches the video command -->
             <item name="5000K" value="0x00"/>
@@ -229,7 +229,7 @@
     </command>
 
     <command name="pMode" code="0x71" mode="rw">
-        <!-- Set/get picture mode. Return string. Command: 'pMode ', 'pMode?' -->
+        <!-- Set/get picture mode. Return string. Command: 'pMode value', 'pMode?' -->
         <value>
             <item name="Dynamic" value="0x00"/>
             <item name="Standard, Live" value="0x01"/>

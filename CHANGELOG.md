@@ -14,5 +14,6 @@
 - Added video (0x04) control
 ## 2.0.0/2026-02-02
 - Input names in samsungd.xml standardisation. Commands input? or status? can return slightly different input name.
-## TODO
+## 2.0.1/2026-04-20
+- Some new commands
 
