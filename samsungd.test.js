@@ -41,6 +41,23 @@ describe('SamsungD', () => {
 	})
 
 	describe('decode', () => {
+		describe('valid data with ACK', () => {
+			afterEach(() => {
+				expect(instance.emitter.emit).toHaveBeenCalled()
+			})
+
+			const testPModeResponse = {
+				"name": "SamsungLFD",
+				"status": "OK",
+				"req": "pMode",
+				"value": "Standard",
+			}
+
+			test('should handle pMode ACK response', () => {
+				expect(instance.decode(Buffer.from('aaff0003417101c2', 'hex'))).toMatchObject(testPModeResponse)
+			})
+		})
+
 		describe('valid data with NACK', () => {
 			afterEach(() => {
 				expect(instance.emitter.emit).toHaveBeenCalled()
