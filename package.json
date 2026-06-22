@@ -22,10 +22,15 @@
     "raw-device": "1.1.x",
     "xml2js": "^0.4.23"
   },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
   "bugs": {
     "url": "https://github.com/magik1969/samsung-lfd/issues",
     "email": "control@infotechnika.pl"
   },
   "license": "MIT",
-  "scripts": {}
+  "scripts": {
+    "test": "jest --silent=false"
+  }
 }
